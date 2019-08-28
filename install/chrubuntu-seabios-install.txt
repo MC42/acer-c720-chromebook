@@ -270,9 +270,8 @@ apt-get -y install grub-pc
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install ${target_disk} --force
 mykern=\`ls /boot/vmlinuz-* | grep -oP \"[0-9].*\" | sort -rV | head -1\`
-wget http://goo.gl/kz917j
-bash kz917j \$mykern
-rm kz917j
+curl -L -O https://gist.githubusercontent.com/ruebenramirez/9201541/raw/4856ff7c10c315ba64bfc5fb07ae07d481b9de91/cros-haswell-modules.sh 
+bash cros-haswell-modules.sh \$mykern
 useradd -m user -s /bin/bash
 echo user | echo user:user | chpasswd
 adduser user adm
